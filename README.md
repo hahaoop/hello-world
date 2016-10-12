@@ -1,2 +1,3 @@
 # hello-world
-study for github
+## purpose
+study for github,wish i can grow up with other devolopers.

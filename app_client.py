@@ -6,6 +6,7 @@ import queue
 
 import requests
 import tornado.ioloop
+import setproctitle
 from tornado.web import RequestHandler, Application
 from tornado.httpserver import HTTPServer
 from tornado.options import options, define
@@ -18,7 +19,7 @@ import gpt_utils
 from logger import Logger
 
 log = Logger()
-# options.log_file_prefix = os.path.join(os.path.dirname(__file__), 'log/tornado_client.log')
+options.log_file_prefix = os.path.join(os.path.dirname(__file__), 'log/tornado_client.log')
 
 
 class SetTaskHandler(RequestHandler):
@@ -82,6 +83,7 @@ def make_app():
 
 
 if __name__ == '__main__':
+    setproctitle.setproctitle('gpt_client')
     all_window = bit_api.get_all_window()
     manager = Manager()
     queue_map = {}
